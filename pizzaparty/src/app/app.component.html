@@ -5,18 +5,9 @@
 </h1>
 
 <div class="container">
-  <div class="row justify-content-center my-5">
-    <div class="col-lg-3">
-      <h2>{{ selectedPizza.name }}</h2>
-      <div>
-        <label>Nom:</label>
-        <img class="img-fluid" [src]="'assets/' + selectedPizza.image" [alt]="selectedPizza.name">
-        <input class="form-control" [(ngModel)]="selectedPizza.name">
-        <label>Prix:</label> {{ selectedPizza.price }}
-      </div>
-    </div>
+    <h1 class="mt-4">{{ title }}</h1>
+    <app-pizza></app-pizza> <!-- Voir dans src/app/pizza -->
   </div>
-</div>
 <div class="container">
   <ul class="row">
     <li *ngFor="let pizza of pizzaList" class="col-md-6 col-lg-3">

@@ -1,0 +1,11 @@
+<div *ngIf="selectedPizza" class="row justify-content-center my-5">
+  <div class="col-lg-3">
+    <h2>{{ selectedPizza.name }}</h2>
+    <div>
+      <label>Nom:</label>
+      <img class="img-fluid" [src]="'assets/' + selectedPizza.image" [alt]="selectedPizza.name">
+      <input class="form-control" [(ngModel)]="selectedPizza.name">
+      <label>Prix:</label> {{ selectedPizza.price }}
+    </div>
+  </div>
+</div>

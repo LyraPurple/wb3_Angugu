@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
+import { Pizza } from './models/pizza';
 
+/* Déplacé dans pizza.ts
 export class Pizza {
   id: number;
   name: string;
   price: number;
   image: string;
 }
+Fin Déplacé dans pizza.ts */
 
 const PIZZAS: Pizza[] = [
   { id: 1, name: 'Reine', price: 12.99, image: '01.jpg' },
