@@ -20,7 +20,7 @@ const PIZZAS: Pizza[] = [
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  // template:``,
+  // template: ``,
   styleUrls: ['./app.component.scss']
 })
 
@@ -29,11 +29,8 @@ export class AppComponent {
   selectedPizza: Pizza;
   pizzaList = PIZZAS;
 
-
-  // Récupère  la pizza qu'on a cliquay (voir sur la consôwle)
-  onselect(pizza: Pizza): void{
+  onSelect(pizza: Pizza): void {
     console.log(pizza);
     this.selectedPizza = pizza;
   }
 }
-
