@@ -1,5 +1,9 @@
 $color: red;
 
-h1{
+h1 {
     color: $color;
+}
+
+.card:hover {
+    cursor: pointer;
 }

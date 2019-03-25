@@ -1,22 +1,36 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  
-  <ul>
-      <li *ngFor="let pizza of pizzaList">
-          <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-              <h5 class="card-title">{{pizza.name}}</h5>
-              <div class="card-text">
-                  <!-- <label>Nom:</label>
+<h1>
+  Welcome to {{ title }}!
+</h1>
+
+<div class="container">
+  <div class="row justify-content-center my-5">
+    <div class="col-lg-3">
+      <h2>{{ pizza.name }}</h2>
+      <div>
+        <label>Nom:</label>
+        <input class="form-control" [(ngModel)]="pizza.name">
+        <label>Prix:</label> {{ pizza.price }}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <ul class="row">
+      <li *ngFor="let pizza of pizzaList" class="col-md-6 col-lg-3">
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" [src]="'assets/' + pizza.image" [alt]="pizza.name">
+          <div class="card-body">
+            <h5 class="card-title">{{pizza.name}}</h5>
+            <div class="card-text">
+              <!-- <label>Nom:</label>
                   <input [(ngModel)]="pizza.name"> -->
-                  <label>Prix:</label>{{pizza.price}}
-              </div>
-              <a href="#" class="btn btn-primary">Passe ta commande GROS!</a>
-              </div>
+              <label>Prix:</label>{{pizza.price}}
+            </div>
+            <a href="#" class="btn btn-primary">Passe ta commande GROS!</a>
           </div>
+        </div>
       </li>
   </ul>
+</div>
