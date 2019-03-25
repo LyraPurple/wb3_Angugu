@@ -4,6 +4,7 @@ export class Pizza {
   id: number;
   name: string;
   price: number;
+  image: string;
 }
 
 const PIZZAS: Pizza[] = [
@@ -22,19 +23,14 @@ const PIZZAS: Pizza[] = [
 
 export class AppComponent {
   title = 'Mon site';
-  pizza: Pizza = {
-    id: 1,
-    name: 'Reine',
-    price: 12.99,
-    image: '01.jpg'
-  };
+  selectedPizza: Pizza;
   pizzaList = PIZZAS;
 
 
   // Récupère  la pizza qu'on a cliquay (voir sur la consôwle)
   onselect(pizza: Pizza): void{
     console.log(pizza);
-    this.pizza = pizza;
+    this.selectedPizza = pizza;
   }
 }
 

@@ -7,30 +7,31 @@
 <div class="container">
   <div class="row justify-content-center my-5">
     <div class="col-lg-3">
-      <h2>{{ pizza.name }}</h2>
+      <h2>{{ selectedPizza.name }}</h2>
       <div>
         <label>Nom:</label>
-        <input class="form-control" [(ngModel)]="pizza.name">
-        <label>Prix:</label> {{ pizza.price }}
+        <img class="img-fluid" [src]="'assets/' + selectedPizza.image" [alt]="selectedPizza.name">
+        <input class="form-control" [(ngModel)]="selectedPizza.name">
+        <label>Prix:</label> {{ selectedPizza.price }}
       </div>
     </div>
   </div>
 </div>
 <div class="container">
   <ul class="row">
-      <li *ngFor="let pizza of pizzaList" class="col-md-6 col-lg-3">
-        <div class="card" style="width: 18rem;">
+    <li *ngFor="let pizza of pizzaList" class="col-md-6 col-lg-3">
+      <div class="card" (click)="onSelect(pizza)" style="width: 18rem;">
         <img class="card-img-top" [src]="'assets/' + pizza.image" [alt]="pizza.name">
-          <div class="card-body">
-            <h5 class="card-title">{{pizza.name}}</h5>
-            <div class="card-text">
-              <!-- <label>Nom:</label>
+        <div class="card-body">
+          <h5 class="card-title">{{pizza.name}}</h5>
+          <div class="card-text">
+            <!-- <label>Nom:</label>
                   <input [(ngModel)]="pizza.name"> -->
-              <label>Prix:</label>{{pizza.price}}
-            </div>
-            <a href="#" class="btn btn-primary">Passe ta commande GROS!</a>
+            <label>Prix:</label>{{pizza.price}}
           </div>
+          <a href="#" class="btn btn-primary">Passe ta commande GROS!</a>
         </div>
-      </li>
+      </div>
+    </li>
   </ul>
 </div>
