@@ -8,7 +8,7 @@ import { PizzaComponent } from './pizza/pizza.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PizzaComponent /* New */
+    PizzaComponent
   ],
   imports: [
     BrowserModule,
