@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  
+  <ul>
+      <li *ngFor="let pizza of pizzaList">
+          <div class="card" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+              <h5 class="card-title">{{pizza.name}}</h5>
+              <div class="card-text">
+                  <!-- <label>Nom:</label>
+                  <input [(ngModel)]="pizza.name"> -->
+                  <label>Prix:</label>{{pizza.price}}
+              </div>
+              <a href="#" class="btn btn-primary">Passe ta commande GROS!</a>
+              </div>
+          </div>
+      </li>
+  </ul>
