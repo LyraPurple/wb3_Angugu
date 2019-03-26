@@ -7,3 +7,7 @@ h1 {
 .card:hover {
     cursor: pointer;
 }
+
+.selected {
+    box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.4);
+}
