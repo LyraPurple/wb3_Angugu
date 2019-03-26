@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PizzaComponent } from './pizza/pizza.component';
+import { MenuComponent } from './menu/menu.component'; /* Pour ajouter un menu */
 /* Ajout du dossier footer, 
 avec tout les éléments 
   footer.component. 
@@ -17,7 +18,8 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     AppComponent,
     PizzaComponent,
-    FooterComponent  /*Ajout du FooterComponent, déclaration de celui-ci */
+    FooterComponent,  /*Ajout du FooterComponent, déclaration de celui-ci */
+    MenuComponent     /*Ajout du MenuComponent,   déclaration de celui-ci */
   ],
   imports: [
     BrowserModule,

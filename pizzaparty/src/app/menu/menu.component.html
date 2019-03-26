@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">{{ logo }}</a>
+    <button class="navbar-toggler" type="button" (click)="toggleCollapseNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [class.show]="isCollapsed">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- src/app/app.component.html
+<app-menu></app-menu>
+
+src/app/app.module.ts
+import { MenuComponent } from './menu/menu.component';
+@NgModule MenuComponent
+
+src/app/menu/menu.component.html
+<nav></nav>
+
+src/app/menu/menu.component.scss
+
+
+src/app/menu/menu.component.spec.ts
+import { MenuComponent } from './menu.component';
+describe'MenuComponent'
+
+src/app/menu/menu.component.ts
+@Component selector: 'app-menu'
+export class MenuComponent  -->
