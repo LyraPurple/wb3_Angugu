@@ -5,32 +5,7 @@
   Welcome to {{ title }}!
 </h1>
 
-<div class="container">
-  <app-pizza [pizza]="selectedPizza"></app-pizza><!-- Voir dans src/app/pizza -->
-</div>
-
-<div class="container">
-  <ul class="row">
-    <li *ngFor="let pizza of pizzaList" class="col-md-6 col-lg-3">
-      <div class="card" 
-          [class.selected]="pizza === selectedPizza" 
-          (click)="onSelect(pizza)" 
-          style="width: 18rem;"
-      >
-        <img class="card-img-top" [src]="'assets/' + pizza.image" [alt]="pizza.name">
-        <div class="card-body">
-          <h5 class="card-title">{{pizza.name}}</h5>
-          <div class="card-text">
-            <!-- <label>Nom:</label>
-                  <input [(ngModel)]="pizza.name"> -->
-            <label>Prix:</label>{{pizza.price}}
-          </div>
-          <a href="#" class="btn btn-primary">Passe ta commande GROS!</a>
-        </div>
-      </div>
-    </li>
-  </ul>
-</div>
+<router-outlet></router-outlet> <!-- src/app/pizzas-route/pizzas-route.component.html -->
 
 <!-- Ajout (intégratation) de le footer: -->
 <app-footer title="Ma pizzeria"></app-footer>
