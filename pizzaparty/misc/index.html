@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promesse</title>
+</head>
+<body>
+    <script>
+        /*var get = function (url, success) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    success(JSON.parse(xhr.responseText));
+                }
+            }
+            xhr.send();
+        }
+
+        get('https://jsonplaceholder.typicode.com/users', function (users) {
+            console.log(users);
+            get('https://jsonplaceholder.typicode.com/posts/?userId='+users[0].id, function (post) {
+                console.log(post);
+            });
+        });*/
+
+        var get = function (url) {
+            return new Promise(function (resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        resolve(JSON.parse(xhr.responseText));
+                    }
+                }
+                xhr.send();
+            })
+        }
+
+        get('https://jsonplaceholder.typicode.com/users').then(function (users) {
+            console.log(users);
+            return get('https://jsonplaceholder.typicode.com/posts/?userId='+users[0].id);
+        }).then(function (post) {
+            console.log(post);
+            return get('https://jsonplaceholder.typicode.com/posts/?userId='+users[0].id);
+        });
+
+    </script>
+</body>
+</html>
