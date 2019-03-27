@@ -1,0 +1,13 @@
+.ng-touched.ng-invalid {
+    border-color: red;
+}
+
+/**
+
+Validation de formulaire avec Angular
+
+- Générer un select en dynamique avec toutes les images existantes
+- Gérer la validation du formulaire avec les bonnes classes CSS (ng-untouched, ng-touched, ng-pristine, ng-dirty...)
+- Désactiver le bouton si le formulaire n'est pas valide
+
+**/

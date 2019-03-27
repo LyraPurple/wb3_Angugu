@@ -11,12 +11,16 @@ export class PizzaAddComponent {
   // pizza: Pizza;
 
   pizza: Pizza = new Pizza();
-
-  constructor(private pizzaService: PizzaService) { }
+  
+  constructor(
+    private pizzaService: PizzaService,
+    private router: Router
+  ) { }
 
   create() {
     console.log(this.pizza);
-    this.pizzaService.createPizza(this.pizza);
+    this.pizzaService.createPizza(this.pizza).then(
+      () => this.router.navigate(['/pizzas'])
+    );
   }
-
 }
