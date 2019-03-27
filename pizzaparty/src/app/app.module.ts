@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PizzaComponent } from './pizza/pizza.component';
@@ -11,6 +12,9 @@ import { PizzasRouteComponent } from './pizzas-route/pizzas-route.component';
 import { HomeRouteComponent } from './home-route/home-route.component';
 import { CounterComponent } from './counter/counter.component';
 import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakeApi } from './services/fake-api.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
       { path: 'pizzas', component: PizzasRouteComponent },
       { path: '', component: HomeRouteComponent },
       { path: 'pizza/:id', component: PizzaSingleComponent }
-    ])
+    ]),
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(FakeApi)
   ],
   providers: [],
   bootstrap: [AppComponent]
