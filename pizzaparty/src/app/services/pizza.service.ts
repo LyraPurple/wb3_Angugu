@@ -42,6 +42,17 @@ export class PizzaService {
     );
   }
 
+   /**
+   * Ajouter une pizza.
+   */
+  createPizza(pizza: Pizza): Promise<Pizza> {
+    /* Comme on a bieng notre http, on peut ajouter notre pizza
+      En http on a get et post, donc là post. */
+    return this.http.post('api/pizzas', pizza).toPromise().then(
+      response => response as Pizza
+    );
+  }
+
   /**
    * Permet de simuler une mauvaise connexion
    */

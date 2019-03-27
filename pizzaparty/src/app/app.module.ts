@@ -12,9 +12,9 @@ import { PizzasRouteComponent } from './pizzas-route/pizzas-route.component';
 import { HomeRouteComponent } from './home-route/home-route.component';
 import { CounterComponent } from './counter/counter.component';
 import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
-
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FakeApi } from './services/fake-api.service';
+import { PizzaAddComponent } from './pizza-add/pizza-add.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { FakeApi } from './services/fake-api.service';
     PizzasRouteComponent,
     HomeRouteComponent,
     CounterComponent,
-    PizzaSingleComponent
+    PizzaSingleComponent,
+    PizzaAddComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +34,7 @@ import { FakeApi } from './services/fake-api.service';
     RouterModule.forRoot([
       { path: 'pizzas', component: PizzasRouteComponent },
       { path: '', component: HomeRouteComponent },
+      { path: 'pizza/new', component: PizzaAddComponent },
       { path: 'pizza/:id', component: PizzaSingleComponent }
     ]),
     HttpClientModule,
