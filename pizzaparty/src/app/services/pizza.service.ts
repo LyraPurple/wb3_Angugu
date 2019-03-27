@@ -15,8 +15,26 @@ export class PizzaService {
 
   constructor() { }
 
+  /**
+   * Récupère un tableau de pizzas
+   */
   getPizzas(): Promise<Pizza[]> {
     return Promise.resolve(PIZZAS);
+  }
+
+  /**
+   * Récupérer une pizza par son id
+   */
+  getPizza(id: number): Promise<Pizza> {
+    return this.getPizzas().then(
+      pizzas => pizzas.find(pizza => pizza.id === id)
+    );
+
+    /* return this.getPizzas().then(pizzas => {
+      return pizzas.find(pizza => {
+        return pizza.id === id;
+      });
+    }); */
   }
   
   /**

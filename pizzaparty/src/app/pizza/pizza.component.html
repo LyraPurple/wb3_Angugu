@@ -2,10 +2,17 @@
   <div class="col-lg-3">
     <h2>{{ pizza.name }}</h2>
     <div>
-      <label>Nom:</label>
       <img class="img-fluid" [src]="'assets/' + pizza.image" [alt]="pizza.name">
+      <label>Nom:</label>
       <input class="form-control" [(ngModel)]="pizza.name">
-      <label>Prix:</label> {{ pizza.price }}
+
+      <label>Prix:</label>
+      <input class="form-control" [(ngModel)]="pizza.price">
+
+      <label>Prix total:</label>
+      <h3>{{ pizza.price * quantity }} €</h3>
+
+      <app-counter [value]="quantity" (increase)="increasePrice($event)" (decrease)="decreasePrice($event)"></app-counter>
     </div>
   </div>
 </div>

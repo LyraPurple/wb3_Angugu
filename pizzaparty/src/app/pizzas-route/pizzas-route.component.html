@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
   <app-pizza [pizza]="selectedPizza"></app-pizza>
 </div>
 
@@ -6,11 +6,13 @@
   <div class="row">
     <div class="col-md-6 col-lg-3" *ngFor="let pizza of pizzaList">
       <div [class.selected]="pizza === selectedPizza"
-            class="card"
-            (click)="onSelect(pizza)">
+           class="card"
+           (click)="onSelect(pizza)">
         <img class="card-img-top" [src]="'assets/' + pizza.image" [alt]="pizza.name">
         <div class="card-body">
           <h4>{{ pizza.name }}</h4>
+          <!-- routerLink="/pizza/{{ pizza.id }}" -->
+          <a class="btn btn-primary" [routerLink]="['/pizza', pizza.id]">Voir la pizza</a>
         </div>
       </div>
     </div>
