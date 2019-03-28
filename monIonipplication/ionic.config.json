@@ -1,5 +1,7 @@
 {
   "name": "monIonipplication",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
