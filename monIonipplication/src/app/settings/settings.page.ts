@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-settings',
@@ -20,14 +21,15 @@ export class SettingsPage implements OnInit {
    * "môwdale"
    */
   this.createMessage();
+  console.log(this.city);
   }
 
   async createMessage(){
     const alert = await this.alertController.create({
-header :this.city,
-buttons: ['OKAY']
-    })
+      header:this.city,
+      buttons: ['OKAY']
+    });
+    // await car c'est une Promesse, mettre await c'est comme .then
+  await alert.present();
   }
-  // await car c'est une Promesse, mettre await c'est comme .then
-await alert.present();
 }
