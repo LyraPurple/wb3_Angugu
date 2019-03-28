@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component  } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -7,7 +7,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./about.page.scss'],
 })
 
-export class AboutPage implements OnInit {
+export class AboutPage {
   constructor(private navCtrl: NavController) { }
 
   goBack() {
