@@ -8,10 +8,15 @@ import { AlertController } from '@ionic/angular';
 })
 export class SettingsPage{
   city: string;
-  constructor(private alertController: AlertController) { 
+  constructor(
+    private alertController: AlertController,
+    private storage: Storage  ) { }
 
-  }
-
+    ngOnInit(){
+      this.storage.get('city').then(
+        city => this.city =city
+        );
+    }
   save() {
   /**
    * Utilisay le service Alert Controller de Ionic
@@ -26,7 +31,13 @@ export class SettingsPage{
   async createMessage(){
     const alert = await this.alertController.create({
       header:this.city,
-      buttons: ['OKAY']
+      buttons: [{
+        text: 'OKAY',
+        handler: () => {
+          // On stocke la ville quand on clique sur OKAY
+          this.storage.set('city', this.city);
+        }
+      }]
     });
     // await car c'est une Promesse, mettre await c'est comme .then
   await alert.present();
