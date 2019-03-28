@@ -6,13 +6,11 @@ import { NavController } from '@ionic/angular';
   templateUrl: './about.page.html',
   styleUrls: ['./about.page.scss'],
 })
-export class AboutPage implements OnInit {
 
-  constructor(private navCtrl: NavController) { 
-    
-  }
+export class AboutPage implements OnInit {
+  constructor(private navCtrl: NavController) { }
+
   goBack() {
     this.navCtrl.back();
   }
-
 }
