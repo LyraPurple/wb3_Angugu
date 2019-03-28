@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Pizza } from '../models/pizza';
 import { PizzaService } from '../services/pizza.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pizza-add',
@@ -14,7 +15,7 @@ export class PizzaAddComponent {
   
   constructor(
     private pizzaService: PizzaService,
-    private router: Router
+    private router: Router,
   ) { }
 
   create() {
