@@ -1,32 +1,27 @@
 <ion-header>
-  <ion-toolbar color="tertiary">
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title *ngIf="city">
-      Météo à {{ city }} 😳
+      Météo à {{ city }}
     </ion-title>
     <ion-title *ngIf="!city">
-      👋 Estes los applicaciòn 👋
+      Météo application
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<!-- On ajoute ion-grid https://ionicframework.com/docs/api/grid -->
-<ion-content padding>  <!-- +padding -->
-  <!-- <div class="ion-padding"> -->
+<ion-content padding>
   <ion-grid>
     <ion-row>
-      <!-- <ion-button expand="block" color="tertiary" (click)="navToAbout()">Voir</ion-button> -->
-      <ion-col size="6" offset="3" class="ion-text-center"> <!-- ion-text-center : https://ionicframework.com/docs/layout/css-utilities#text-alignment -->
-        <p>Une application pour 😊 la météo.</p>
+      <ion-col size="6" offset="3" class="ion-text-center">
         <h2>{{ city }}</h2>
         <div *ngIf="meteo.image">
           <img [src]="meteo.image" [alt]="city">
           <h3>Température</h3>
           <h1>{{ meteo.temperature }} &deg;C</h1>
         </div>
-      </ion-col>
       </ion-col>
     </ion-row>
   </ion-grid>
