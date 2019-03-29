@@ -1,14 +1,20 @@
 <ion-header>
-  <ion-toolbar color="tertiary"> <!-- /theme/variables.scss -->
-    <ion-title>
-      Coucou moi-même!
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="city">
+      Météo à {{ city }} 😳
+    </ion-title>
+    <ion-title *ngIf="!city">
+      👋 Estes los applicaciòn 👋
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <p>👋</p>
-
-
-  <ion-button color="tertiary" (click)="navToAbout()">A propos</ion-button>
+<ion-content>
+  <div class="ion-padding">
+    <p>Une application pour 😊 la météo.</p>
+    <ion-button expand="block" color="tertiary" (click)="navToAbout()">Voir</ion-button>
+  </div>
 </ion-content>
