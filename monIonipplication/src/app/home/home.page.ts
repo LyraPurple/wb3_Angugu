@@ -33,8 +33,8 @@ export class HomePage {
     }).then(
       response => {
         console.log(response);
-        this.meteo.image = response.current_condition.icon_big;
-        this.meteo.temperature = response.current_condition.tmp;
+        this.meteo.image = response['current_condition']['icon_big'];
+        this.meteo.temperature = response['current_condition']['tmp'];
 
         /**
          * On veut afficher dans le template la température pour les 4
