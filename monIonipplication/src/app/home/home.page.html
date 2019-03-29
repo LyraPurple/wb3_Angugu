@@ -12,9 +12,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    <p>Une application pour 😊 la météo.</p>
-    <ion-button expand="block" color="tertiary" (click)="navToAbout()">Voir</ion-button>
-  </div>
+<!-- On ajoute ion-grid https://ionicframework.com/docs/api/grid -->
+<ion-content padding>  <!-- +padding -->
+  <!-- <div class="ion-padding"> -->
+  <ion-grid>
+    <ion-row>
+      <!-- <ion-button expand="block" color="tertiary" (click)="navToAbout()">Voir</ion-button> -->
+      <ion-col size="6" offset="3" class="ion-text-center"> <!-- ion-text-center : https://ionicframework.com/docs/layout/css-utilities#text-alignment -->
+        <p>Une application pour 😊 la météo.</p>
+        <h2>{{ city }}</h2>
+        <div *ngIf="meteo.image">
+          <img [src]="meteo.image" [alt]="city">
+          <h3>Température</h3>
+          <h1>{{ meteo.temperature }} &deg;C</h1>
+        </div>
+      </ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

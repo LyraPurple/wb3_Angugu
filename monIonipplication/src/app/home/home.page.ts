@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomePage {
   city: string;
+  meteo = {image: null, temperature: null}
 
   constructor(
     private router: Router,
@@ -23,9 +24,21 @@ export class HomePage {
    * la ville à partir du storage
    */
   ionViewWillEnter() {
-    this.storage.get('city').then(c => this.city = c);
+    this.storage.get('city').then(c => {this.city = c;return this.http.get('https://www.prevision-meteo.ch/services/json/' + this.city).toPromise();}).then(
+      response => {
+        console.log(response);
+        this.meteo.image = response.current_condition.icon_big;
+        this.meteo.temperature = response.current_condition.tmp;
 
-    this.http.get('https://www.prevision-meteo.ch/services/json/hulluch').toPromise().then(response => console.log(response));
+        /**
+         * On veut afficher dans le template la température pour les 4
+         * prochains jours. On utilisera une "ion-list" : https://ionicframework.com/docs/api/list
+         */
+      }
+    );
+
+
+    /* Old : this.http.get('https://www.prevision-meteo.ch/services/json/hulluch').toPromise().then(response => console.log(response)); */
   }
 
   navToAbout() {
