@@ -16,6 +16,7 @@ export class HomePage {
     temperature: null,
     error: false /* Récupération de l'erreur */
   }
+  days: object[] = [];
 
   constructor(
     private router: Router,
@@ -40,7 +41,8 @@ export class HomePage {
           image: null,
           temperature: null,
           error: false
-        };
+        };        
+        this.days = [];
 
         // Si pas de ville choisie, on ne fait rien
         if (this.city === null || this.city.length === 0) {
@@ -57,7 +59,13 @@ export class HomePage {
         this.meteo.temperature = response['current_condition']['tmp'];
         this.city = response['city_info']['name'];
 
-
+        /**
+         * On affiche la température pour les 4
+         * prochains jours.
+         */
+        for (let i of [1, 2, 3, 4]) {
+          this.days.push(response['fcst_day_' + i]);
+        }
       }
     );
   }

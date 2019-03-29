@@ -32,4 +32,19 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-list>
+    <!-- Affichay la météôw sur les 4 prochaing jours -->
+    <ion-item *ngFor="let day of days">
+      <ion-avatar>
+        <img src="{{ day.icon_big }}">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ day.day_long }}</h2>
+        <h3>{{ day.date }}</h3>
+      </ion-label>
+      <ion-note>
+        Entre {{ day.tmin }}° et {{ day.tmax }}°
+      </ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>
