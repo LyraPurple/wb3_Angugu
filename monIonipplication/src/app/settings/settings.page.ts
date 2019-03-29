@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-settings',
@@ -12,7 +14,9 @@ export class SettingsPage implements OnInit {
 
   constructor(
     private alertController: AlertController,
-    private storage: Storage
+    private storage: Storage,
+    private geolocation: Geolocation,
+    private http: HttpClient
     ) { }
 
   ngOnInit() {
@@ -22,16 +26,13 @@ export class SettingsPage implements OnInit {
     );
   }
 
-  async createMessage() {
+  // On refacto notre createMessage
+  async createMessage(message, handler = null) {
     const alert = await this.alertController.create({
-      header: this.city,
+      header: message,
       buttons: [{
         text: 'OK',
-        handler: () => {
-          // On stocke la ville quand on clique sur OK
-          this.storage.set('city', this.city);
-          // this.storage.set('foo', {'bar': 'id', 'id': 'toto'});
-        }
+        handler: handler
       }]
     });
 
@@ -39,7 +40,11 @@ export class SettingsPage implements OnInit {
   }
 
   save() {
-    this.createMessage();
+    this.createMessage(this.city, () => {
+      // On stocke la ville quand on clique sur OK
+      this.storage.set('city', this.city);
+      // this.storage.set('foo', {'bar': 'id', 'id': 'toto'});
+    });
 
     /**
      * Utiliser le service Alert Controller de Ionic
@@ -47,6 +52,30 @@ export class SettingsPage implements OnInit {
      * "modal"
      */
     console.log(this.city);
+  }
+
+  geolocate() {
+    this.geolocation.getCurrentPosition().then(resp => {
+      this.createMessage(resp.coords.latitude + ' ' + resp.coords.longitude);
+      return this.http.get('https://api-adresse.data.gouv.fr/reverse/?lat='+resp.coords.latitude+'&lon='+resp.coords.longitude).toPromise();
+    }).then(response => this.city = this.parseCity(response['features'][0]['properties']['city']))
+    .catch(error => this.createMessage(error.message));
+  }
+
+  /**
+   * On peut modifier la chaine contenant la ville.
+   * Noyelles Sous Lens devient noyelles-sous-lens
+   * @param string Ville
+   */
+  parseCity(string: string) {
+    if ('La Madeleine' === string) {
+      string = string.replace('La ', '');
+    }
+
+    string = string.replace(' ', '-');
+
+
+    return string.toLowerCase();
   }
 
 }
