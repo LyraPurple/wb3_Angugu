@@ -22,6 +22,13 @@
           <h3>Température</h3>
           <h1>{{ meteo.temperature }} &deg;C</h1>
         </div>
+        <!-- Afficher un message d'erreure si la ville n'existe pas -->
+        <div *ngIf="meteo.error">
+          <h2>Il y a une erreur.</h2>
+        </div>
+        <div *ngIf="!city">
+          <h1>Vous devez choisir une ville.</h1>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -13,7 +13,8 @@ export class HomePage {
   city: string;
   meteo = {
     image: null,
-    temperature: null
+    temperature: null,
+    error: false /* Récupération de l'erreur */
   }
 
   constructor(
@@ -32,14 +33,31 @@ export class HomePage {
       return this.http.get('https://www.prevision-meteo.ch/services/json/' + this.city).toPromise();
     }).then(
       response => {
-        console.log(response);
+      /*Plus bas, après les testes
+        this.meteo.image = response['current_condition']['icon_big'];
+        this.meteo.temperature = response['current_condition']['tmp']; */
+        this.meteo = {
+          image: null,
+          temperature: null,
+          error: false
+        };
+
+        // Si pas de ville choisie, on ne fait rien
+        if (this.city === null || this.city.length === 0) {
+          return;
+        }
+        // Si la ville n'est pas trouvée par l'API
+        if (response.hasOwnProperty('errors')) {
+          this.meteo.error = true;
+          return;
+        }
+
+        // Si la ville est trouvée par l'API
         this.meteo.image = response['current_condition']['icon_big'];
         this.meteo.temperature = response['current_condition']['tmp'];
+        this.city = response['city_info']['name'];
 
-        /**
-         * On veut afficher dans le template la température pour les 4
-         * prochains jours. On utilisera une "ion-list".
-         */
+
       }
     );
   }
